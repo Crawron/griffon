@@ -5,11 +5,7 @@ import {
   Command,
   CommandContext,
 } from "./Commands/Command"
-
-export type MessageEventContext = {
-  message: MockMessage // placeholder type
-  bot: Bot
-}
+import { MessageEventContext } from "./Types/MessageEventContext"
 
 // Bot
 type BotOptions = {
@@ -17,7 +13,7 @@ type BotOptions = {
   commands: (Command | CommandGroup)[]
 }
 
-type MockMessage = { content: string; author: { id: string } }
+export type MockMessage = { content: string; author: { id: string } }
 
 export class Bot {
   commands: (Command | CommandGroup)[]

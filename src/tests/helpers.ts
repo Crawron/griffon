@@ -1,9 +1,4 @@
-import {
-  Matcher,
-  matcherHelpers,
-  MatcherContext,
-  MatcherStatus,
-} from "../Matcher"
+import { Matcher, matcherHelpers, MatcherContext } from "../Matchers/Matcher"
 
 export const matchTest: Matcher = ctx => {
   switch (ctx.message.content) {
@@ -19,11 +14,12 @@ export const matchTest: Matcher = ctx => {
 
 const bot: any = "the"
 
-export const getMockContext: (msg?: string) => MatcherContext = (
-  message: string = ""
+export const getMockContext: (msg?: string, args?: string) => MatcherContext = (
+  message = "",
+  args = ""
 ) => ({
   bot,
+  args,
   message: { content: message, author: { id: "111" } },
-  args: "",
   ...matcherHelpers,
 })

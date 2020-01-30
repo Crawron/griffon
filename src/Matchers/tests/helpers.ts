@@ -9,7 +9,7 @@ export const matchTest: Matcher = ctx => {
     case "skip":
       return ctx.skip()
   }
-  throw "fuck"
+  throw "unexpected message"
 }
 
 const bot: any = "the"

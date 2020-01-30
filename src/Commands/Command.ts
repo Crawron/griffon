@@ -1,4 +1,4 @@
-import { MessageEventContext } from "../Bot"
+import { MessageEventContext } from "../Types/MessageEventContext"
 import { Matcher } from "../Matchers/Matcher"
 
 // super placeholder

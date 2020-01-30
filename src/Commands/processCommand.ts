@@ -1,6 +1,6 @@
 import { Command } from "./Command"
 
-const processCommand: (
+export const processCommand: (
   process: (str: string) => string,
   name: string
 ) => Command = (process, name) => ({

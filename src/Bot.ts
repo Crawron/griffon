@@ -1,5 +1,10 @@
-import { MatcherContext, matcherHelpers } from "./Matcher"
-import { CommandLike, CommandGroup, Command } from "./Command"
+import { MatcherContext, matcherHelpers } from "./Matchers/Matcher"
+import {
+  CommandLike,
+  CommandGroup,
+  Command,
+  CommandContext,
+} from "./Commands/Command"
 
 export type MessageEventContext = {
   message: MockMessage // placeholder type
@@ -32,31 +37,31 @@ export class Bot {
 
   traverseTree(
     command: Command | CommandGroup,
-    ctx: MatcherContext | MessageEventContext
+    ctx: CommandContext | MessageEventContext
   ) {
     // ignoring conditions exist for now. wip
-    const args = (ctx as MatcherContext).args ?? ctx.message.content
+    const args = (ctx as CommandContext).args ?? ctx.message.content
 
     const matchedName = command.names.find(name =>
       getPrefixRegex(name).test(args)
     )
 
-    if (!matchedName) throw "???? todo"
+    if (!matchedName) return false
 
     const regex = getPrefixRegex(matchedName)
-    const newCtx: MatcherContext = {
+    const newCtx: CommandContext = {
       ...ctx,
-      ...matcherHelpers,
       args: args.replace(regex, ""),
     }
 
     if ("action" in command) {
       // command is Command
       command.action(newCtx)
+      return true
     } else {
       // command is CommandGroup
       for (const child of command.childCommands) {
-        this.traverseTree(child, newCtx)
+        if (this.traverseTree(child, newCtx)) return
       }
     }
   }

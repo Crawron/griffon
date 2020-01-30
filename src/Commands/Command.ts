@@ -1,5 +1,5 @@
-import { MessageEventContext } from "./Bot"
-import { Matcher } from "./Matcher"
+import { MessageEventContext } from "../Bot"
+import { Matcher } from "../Matchers/Matcher"
 
 // super placeholder
 export type CommandMetadata = Partial<{

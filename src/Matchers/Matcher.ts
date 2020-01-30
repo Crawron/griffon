@@ -1,4 +1,4 @@
-import { MessageEventContext } from "./Bot"
+import { MessageEventContext } from "../Bot"
 
 export type MatcherResult =
   | MatcherMatchResult
@@ -20,9 +20,6 @@ export const matcherHelpers = {
   skip: (): MatcherSkipResult => ({ status: "skip" }),
 }
 
-export type MatcherContext = MessageEventContext &
-  typeof matcherHelpers & {
-    args: string
-  }
+export type MatcherContext = MessageEventContext & typeof matcherHelpers
 
 export type Matcher = (context: MatcherContext) => MatcherResult

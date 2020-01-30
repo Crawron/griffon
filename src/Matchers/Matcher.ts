@@ -9,6 +9,8 @@ export type MatcherMatchResult = { status: "match" }
 export type MatcherSkipResult = { status: "skip" }
 export type MatcherErrorResult = { status: "error"; error: string }
 
+export type MatcherStatus = MatcherResult["status"]
+
 export const matcherHelpers = {
   error: (er: string): MatcherErrorResult => ({
     status: "error",

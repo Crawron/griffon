@@ -3,7 +3,9 @@ import { Matcher, MatcherErrorResult } from "./Matcher"
 /** Matches if any of the providers matchers match.
  * Errors have priority, if any error, it errors.
  * To ignore errors, use skipError */
-const matchAny: (...matchers: Matcher[]) => Matcher = (...matchers) => ctx => {
+export const matchAny: (...matchers: Matcher[]) => Matcher = (
+  ...matchers
+) => ctx => {
   const results = matchers.map(m => m(ctx))
 
   // if any errors, error

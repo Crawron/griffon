@@ -9,6 +9,6 @@ export const matchStatus: (
     case "skip":
       return ctx.skip()
     case "error":
-      return ctx.error("test")
+      return ctx.error("error")
   }
 }

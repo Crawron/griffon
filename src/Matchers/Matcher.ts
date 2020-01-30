@@ -1,4 +1,4 @@
-import { MessageEventContext } from "../Bot"
+import { MessageEventContext } from "../Types/MessageEventContext"
 
 export type MatcherResult =
   | MatcherMatchResult
@@ -8,8 +8,6 @@ export type MatcherResult =
 export type MatcherMatchResult = { status: "match" }
 export type MatcherSkipResult = { status: "skip" }
 export type MatcherErrorResult = { status: "error"; error: string }
-
-/// no hold up, error doesnt need to be Error
 
 export const matcherHelpers = {
   error: (er: string): MatcherErrorResult => ({

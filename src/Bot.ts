@@ -1,19 +1,11 @@
-import { MatcherContext, matcherHelpers } from "./Matchers/Matcher"
-import {
-  CommandLike,
-  CommandGroup,
-  Command,
-  CommandContext,
-} from "./Commands/Command"
+import { CommandGroup, Command, CommandContext } from "./Commands/Command"
 import { MessageEventContext } from "./Types/MessageEventContext"
+import { MockMessage } from "./Types/MockMessage"
 
-// Bot
 type BotOptions = {
   // token: string
   commands: (Command | CommandGroup)[]
 }
-
-export type MockMessage = { content: string; author: { id: string } }
 
 export class Bot {
   commands: (Command | CommandGroup)[]

@@ -1,5 +1,4 @@
-import { Matcher, matcherHelpers, MatcherContext } from "./Matcher"
-import { Bot } from "../Bot"
+import { Matcher, matcherHelpers, MatcherContext } from "../Matcher"
 
 const matchTest: Matcher = ctx => {
   switch (ctx.message.content) {

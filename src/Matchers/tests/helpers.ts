@@ -17,19 +17,6 @@ export const matchTest: Matcher = ctx => {
   throw "unexpected message"
 }
 
-export const matchStatus: (
-  status: MatcherStatus
-) => Matcher = status => ctx => {
-  switch (status) {
-    case "match":
-      return ctx.match()
-    case "skip":
-      return ctx.skip()
-    case "error":
-      return ctx.error("test")
-  }
-}
-
 const bot: any = "the"
 
 export const getMockContext: (msg?: string) => MatcherContext = (

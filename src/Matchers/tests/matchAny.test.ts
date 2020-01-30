@@ -1,6 +1,7 @@
 import { MatcherStatus } from "../Matcher"
 import { matchAny } from "../matchAny"
-import { matchTest, getMockContext, matchStatus } from "./helpers"
+import { matchTest, getMockContext } from "./helpers"
+import { matchStatus } from "../matchStatus"
 
 it.each<MatcherStatus>(["match", "skip", "error"])(
   "outputs the right states",

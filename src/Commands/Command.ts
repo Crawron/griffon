@@ -23,5 +23,5 @@ export type Command = CommandLike & {
 }
 
 export type CommandGroup = CommandLike & {
-  childCommands: Command[]
+  childCommands: (Command | CommandGroup)[]
 }

@@ -1,4 +1,9 @@
-import { CommandGroup, Command, CommandContext } from "./Commands/Command"
+import {
+  CommandGroup,
+  Command,
+  CommandContext,
+  CommandLike,
+} from "./Commands/Command"
 import { MessageEventContext } from "./Types/MessageEventContext"
 import { MockMessage } from "./Types/MockMessage"
 
@@ -20,39 +25,54 @@ export class Bot {
       bot: this,
     }
 
-    this.traverseTree(this.commands.pop()!, eventCtx)
+    this.traverseCommandTree(this.commands.pop()!, eventCtx)
   }
 
-  traverseTree(
-    command: Command | CommandGroup,
-    ctx: CommandContext | MessageEventContext
-  ) {
+  traverseCommandTree(
+    root: Command | CommandGroup,
+    ctx: MessageEventContext
+  ): void {
     // ignoring conditions exist for now. wip
-    const args = (ctx as CommandContext).args ?? ctx.message.content
+    let currentCommand = root
+    let args = processCommandArgs(ctx.message.content, root)
 
-    const matchedName = command.names.find(name =>
-      getPrefixRegex(name).test(args)
-    )
-
-    if (!matchedName) return false
-
-    const regex = getPrefixRegex(matchedName)
-    const newCtx: CommandContext = {
-      ...ctx,
-      args: args.replace(regex, ""),
-    }
-
-    if ("action" in command) {
-      // command is Command
-      command.action(newCtx)
-      return true
-    } else {
-      // command is CommandGroup
-      for (const child of command.childCommands) {
-        if (this.traverseTree(child, newCtx)) return
+    // currentCommand matched a name
+    while (true) {
+      if (!args) return
+      if ("action" in currentCommand) {
+        // currentCommand is Command
+        const cmdCtx: CommandContext = { ...ctx, args }
+        currentCommand.action(cmdCtx)
+        return
       }
+
+      // currentCommand is CommandGroup
+      const matchingChildCommand = currentCommand.childCommands.find(
+        command => processCommandArgs(args!, command) !== undefined
+      )
+
+      if (!matchingChildCommand) return
+
+      // one of the command childs matched a name
+      currentCommand = matchingChildCommand
+      args = processCommandArgs(args, currentCommand)
     }
   }
 }
 
 const getPrefixRegex = (prefix: string) => new RegExp(`^ *${prefix}`)
+
+/** Returns resulting arguments */
+function processCommandArgs(
+  args: string,
+  command: CommandLike
+): string | undefined {
+  const matchedName = command.names.find(name =>
+    getPrefixRegex(name).test(args)
+  )
+
+  if (!matchedName) return undefined
+
+  const regex = getPrefixRegex(matchedName)
+  return args.replace(regex, "")
+}

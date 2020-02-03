@@ -1,11 +1,12 @@
 import { Command } from "./Command"
+import { commandName } from "../Matchers/commandName"
 
 export const replyCommand: (replyMsg: string, name: string) => Command = (
   replyMsg,
-  name
+  name = "reply"
 ) => ({
-  names: [name],
+  condition: commandName(name),
   action: ctx => {
-    console.log(replyMsg)
+    ctx.message.channel.createMessage(replyMsg)
   },
 })

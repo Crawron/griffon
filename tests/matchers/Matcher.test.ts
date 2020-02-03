@@ -1,4 +1,4 @@
-import { matchTest, getMockContext } from "../../tests/helpers"
+import { matchTest, getMockContext } from "../helpers"
 
 it("matches", () => {
   const result = matchTest(getMockContext("match"))

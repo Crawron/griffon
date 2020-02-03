@@ -1,4 +1,4 @@
-import { MessageEventContext } from "../Types/MessageEventContext"
+import { MessageEventContext } from "../MessageEventContext"
 import { Matcher } from "../Matchers/Matcher"
 
 // super placeholder
@@ -9,14 +9,11 @@ export type CommandMetadata = Partial<{
 }>
 
 export type CommandLike = {
-  names: string[]
-  condition?: Matcher
+  condition: Matcher
   metadata?: CommandMetadata
 }
 
-export type CommandContext = MessageEventContext & {
-  args: string
-}
+export type CommandContext = MessageEventContext
 
 export type Command = CommandLike & {
   action: (context: CommandContext) => void

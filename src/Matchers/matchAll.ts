@@ -3,15 +3,26 @@ import {
   MatcherResult,
   MatcherErrorResult,
   MatcherContext,
+  getMatcherContext,
 } from "./Matcher"
 
 export const matchAll = (...matchers: Matcher[]) => (
   ctx: MatcherContext
 ): MatcherResult => {
+  console.log("match all")
   const { skip, error, match } = ctx
 
   // collect all matchers' results
-  const matcherResults = matchers.map(m => m(ctx))
+  let finalArgs = ctx.args
+  const matcherResults: MatcherResult[] = []
+
+  for (const matcher of matchers) {
+    const context = getMatcherContext({ ...ctx, args: finalArgs })
+    const results = matcher(context)
+
+    if (results.status === "match") finalArgs = results.args
+    matcherResults.push(results)
+  }
 
   // error() if any of the matchers error
   const errorResult = matcherResults.find(
@@ -22,5 +33,6 @@ export const matchAll = (...matchers: Matcher[]) => (
   // no errors, skip() if any of the matchers skipped
   const skipResult = matcherResults.find(r => r.status === "skip")
   if (skipResult) return skip()
-  return match()
+
+  return match(finalArgs)
 }

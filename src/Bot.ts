@@ -1,78 +1,97 @@
-import {
-  CommandGroup,
-  Command,
-  CommandContext,
-  CommandLike,
-} from "./Commands/Command"
-import { MessageEventContext } from "./Types/MessageEventContext"
-import { MockMessage } from "./Types/MockMessage"
+import { CommandGroup, Command, CommandContext } from "./Commands/Command"
+import { MessageEventContext } from "./MessageEventContext"
+import Eris from "eris"
 
-type BotOptions = {
-  // token: string
-  commands: (Command | CommandGroup)[]
+import { getMatcherContext } from "./Matchers/Matcher"
+
+type BotOptions = Eris.ClientOptions & {
+  token: string
+  command: Command | CommandGroup
 }
 
 export class Bot {
-  commands: (Command | CommandGroup)[]
+  command: Command | CommandGroup
+  client: Eris.Client
 
   constructor(options: BotOptions) {
-    this.commands = options.commands
+    const { command, token, ...erisOptions } = options
+
+    this.command = options.command
+    this.client = new Eris.Client(options.token, erisOptions)
+
+    this.client.on("messageCreate", this.handleMessageEvent)
+    this.client.on("ready", () => console.log("ready"))
   }
 
-  handleMessageEvent(message: MockMessage) {
+  connect() {
+    return this.client.connect()
+  }
+
+  disconnect(reconnect = false) {
+    return this.client.disconnect({ reconnect })
+  }
+
+  handleMessageEvent = (message: Eris.Message) => {
     const eventCtx: MessageEventContext = {
       message,
+      args: message.content,
       bot: this,
     }
 
-    this.traverseCommandTree(this.commands.pop()!, eventCtx)
+    Bot.traverseCommandTree(this.command, eventCtx)
   }
 
-  traverseCommandTree(
+  static traverseCommandTree(
     root: Command | CommandGroup,
     ctx: MessageEventContext
   ): void {
     // ignoring conditions exist for now. wip
     let currentCommand = root
-    let args = processCommandArgs(ctx.message.content, root)
 
-    // currentCommand matched a name
     while (true) {
-      if (!args) return
+      console.log(currentCommand)
+      let matcherResult = currentCommand.condition(getMatcherContext(ctx))
+
+      switch (matcherResult.status) {
+        case "skip":
+          return
+
+        case "error":
+          ctx.message.channel.createMessage(`Error: \`${matcherResult.error}\``)
+          return
+      }
+
+      // currentCommand matched
+      ctx.args = matcherResult.args
+
       if ("action" in currentCommand) {
         // currentCommand is Command
-        const cmdCtx: CommandContext = { ...ctx, args }
+        const cmdCtx: CommandContext = ctx
         currentCommand.action(cmdCtx)
         return
       }
 
       // currentCommand is CommandGroup
-      const matchingChildCommand = currentCommand.childCommands.find(
-        command => processCommandArgs(args!, command) !== undefined
-      )
+      const childResults = currentCommand.childCommands.map(c => ({
+        result: c.condition(getMatcherContext(ctx)),
+        command: c,
+      }))
 
-      if (!matchingChildCommand) return
+      const childMatch = childResults.find(r => r.result.status === "match")
 
-      // one of the command childs matched a name
-      currentCommand = matchingChildCommand
-      args = processCommandArgs(args, currentCommand)
+      if (childMatch) {
+        currentCommand = childMatch.command
+        continue
+      }
+
+      const childError = childResults.find(r => r.result.status === "error")
+
+      if (childError) {
+        currentCommand = childError.command
+        continue
+      }
+
+      return
     }
   }
-}
-
-const getPrefixRegex = (prefix: string) => new RegExp(`^ *${prefix}`)
-
-/** Returns resulting arguments */
-function processCommandArgs(
-  args: string,
-  command: CommandLike
-): string | undefined {
-  const matchedName = command.names.find(name =>
-    getPrefixRegex(name).test(args)
-  )
-
-  if (!matchedName) return undefined
-
-  const regex = getPrefixRegex(matchedName)
-  return args.replace(regex, "")
 }

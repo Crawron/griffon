@@ -4,10 +4,8 @@
   "repository": "git://github.com/Crawron/griffon.git",
   "version": "0.0.5",
   "main": "./lib/index.js",
-  "types": "./lib/types/index.d.ts",
+  "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "jest",
-    "build": "tsc",
     "prepublishOnly": "tsc"
   },
   "devDependencies": {

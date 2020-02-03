@@ -9,7 +9,6 @@ import {
 export const matchAll = (...matchers: Matcher[]) => (
   ctx: MatcherContext
 ): MatcherResult => {
-  console.log("match all")
   const { skip, error, match } = ctx
 
   // collect all matchers' results

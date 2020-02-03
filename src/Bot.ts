@@ -20,7 +20,6 @@ export class Bot {
     this.client = new Eris.Client(options.token, erisOptions)
 
     this.client.on("messageCreate", this.handleMessageEvent)
-    this.client.on("ready", () => console.log("ready"))
   }
 
   connect() {
@@ -49,7 +48,6 @@ export class Bot {
     let currentCommand = root
 
     while (true) {
-      console.log(currentCommand)
       let matcherResult = currentCommand.condition(getMatcherContext(ctx))
 
       switch (matcherResult.status) {

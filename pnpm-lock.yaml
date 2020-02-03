@@ -1,9 +1,8 @@
-dependencies:
-  eris: 0.11.2
 devDependencies:
   '@types/jest': 25.1.1
   '@types/node': 13.7.0
   dotenv: 8.2.0
+  eris: 0.11.2
   jest: 25.1.0
   ts-jest: 25.1.0_jest@25.1.0
   ts-node: 8.6.2_typescript@3.7.5
@@ -1064,7 +1063,7 @@ packages:
   /eris/0.11.2:
     dependencies:
       ws: 7.2.1
-    dev: false
+    dev: true
     engines:
       node: '>=8.0.0'
     optionalDependencies:
@@ -2636,7 +2635,7 @@ packages:
     resolution:
       integrity: sha512-+IW9pACdk3XWmmTXG8m3upGUJst5XRGzxMRjXzAuJ1XnIFNvfhjjIuYkDvysnPQ7qzqVzLt78BCruntqRhWQbA==
   /opusscript/0.0.7:
-    dev: false
+    dev: true
     optional: true
     resolution:
       integrity: sha512-DcBadTdYTUuH9zQtepsLjQn4Ll6rs3dmeFvN+SD0ThPnxRBRm/WC1zXWPg+wgAJimB784gdZvUMA57gDP7FdVg==
@@ -3447,7 +3446,7 @@ packages:
     resolution:
       integrity: sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
   /tweetnacl/1.0.2:
-    dev: false
+    dev: true
     optional: true
     resolution:
       integrity: sha512-+8aPRjmXgf1VqvyxSlBUzKzeYqVS9Ai8vZ28g+mL7dNQl1jlUTCMDZnvNQdAS1xTywMkIXwJsfipsR/6s2+syw==
@@ -3646,6 +3645,7 @@ packages:
     resolution:
       integrity: sha512-JPStrIyyVJ6oCSz/691fAjFtefZ6q+fP6tm+OS4Qw6o+TGQxNp1ziY2PgS+X/m0V8OWhZiO/m4xSj+Pr4RrZvw==
   /ws/7.2.1:
+    dev: true
     engines:
       node: '>=8.3.0'
     peerDependencies:

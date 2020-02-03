@@ -2,7 +2,7 @@
   "name": "@crawron/griffon",
   "author": "Crawron",
   "repository": "git://github.com/Crawron/griffon.git",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./lib/index.js",
   "types": "./lib/types/index.d.ts",
   "scripts": {

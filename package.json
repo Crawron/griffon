@@ -1,7 +1,7 @@
 {
   "name": "griffon",
   "author": "Crawron",
-  "repository": "git://github.com/my-org/test.git",
+  "repository": "git://github.com/Crawron/griffon.git",
   "version": "0.0.1",
   "main": "./lib/index.js",
   "types": "./lib/types/index.d.ts",

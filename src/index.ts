@@ -12,7 +12,7 @@ export { skip } from "./Matchers/skip"
 export { hasArgs } from "./Matchers/hasArgs"
 
 // Commands
-export { Command } from "./Commands/Command"
+export { Command, CommandGroup } from "./Commands/Command"
 export { quickCommand } from "./Commands/quickCommand"
 export { replyCommand } from "./Commands/replyCommand"
 export { processCommand } from "./Commands/processCommand"

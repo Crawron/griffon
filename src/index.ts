@@ -3,6 +3,7 @@ export { Bot, BotOptions } from "./Bot"
 // Matchers
 export { Matcher } from "./Matchers/Matcher"
 export { matchAll } from "./Matchers/matchAll"
+export { everyMessage } from "./Matchers/everyMessage"
 export { matchStatus } from "./Matchers/matchStatus"
 export { commandName } from "./Matchers/commandName"
 export { matchOrError } from "./Matchers/matchOrError"

@@ -4,7 +4,7 @@ import Eris from "eris"
 
 import { getMatcherContext } from "./Matchers/Matcher"
 
-type BotOptions = Eris.ClientOptions & {
+export type BotOptions = Eris.ClientOptions & {
   token: string
   command: Command | CommandGroup
 }

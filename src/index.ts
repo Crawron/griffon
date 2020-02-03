@@ -1,4 +1,4 @@
-export { Bot } from "./Bot"
+export { Bot, BotOptions } from "./Bot"
 
 // Matchers
 export { Matcher } from "./Matchers/Matcher"

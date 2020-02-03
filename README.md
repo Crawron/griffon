@@ -15,3 +15,31 @@ npm i eris @crawron/griffon
 ```
 
 > Use yarn or pnpm if you want.
+
+## Small Example
+
+```js
+const customCommand = {
+  condition: commandName("roll", "r"),
+  action: ctx => {
+    const { args, message } = ctx
+
+    const sides = args.trim() ? parseInt(args) : 10
+    const roll = Math.floor(Math.random() * (sides - 1) + 1)
+
+    message.channel.createMessage(`${message.author.mention} rolled ${roll}!`)
+  },
+}
+
+const bot = new Bot({
+  token,
+  command: {
+    condition: commandName("!"),
+    childCommands: [customCommand, echoCommand(), replyCommand("BODY", "some")],
+  },
+})
+
+bot.connect()
+```
+
+![Usage](http://AzertyAaron.u.catgirlsare.sexy/o8mF.png)

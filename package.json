@@ -1,9 +1,15 @@
 {
   "name": "griffon",
   "author": "Crawron",
+  "repository": {
+    "url": "https://github.com/Crawron/griffon"
+  },
   "version": "0.0.1",
   "main": "./lib/index.js",
   "types": "./lib/types/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "test": "jest",
     "build": "tsc"

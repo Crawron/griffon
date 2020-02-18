@@ -6,7 +6,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "prepublishOnly": "tsc"
+    "prepublish": "tsc"
   },
   "devDependencies": {
     "@types/jest": "^25.1.1",

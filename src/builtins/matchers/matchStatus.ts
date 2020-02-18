@@ -1,4 +1,4 @@
-import { MatcherStatus, Matcher } from "./Matcher"
+import { MatcherStatus, Matcher } from "../../Matcher"
 
 export const matchStatus: (
   status: MatcherStatus

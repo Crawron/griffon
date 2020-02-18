@@ -1,3 +1,3 @@
-import { Matcher } from "./Matcher"
+import { Matcher } from "../../Matcher"
 
 export const everyMessage: Matcher = ctx => ctx.match()

@@ -1,8 +1,8 @@
-import { CommandGroup, Command, CommandContext } from "./Commands/Command"
+import { CommandGroup, Command, CommandContext } from "./Command"
 import { MessageEventContext } from "./MessageEventContext"
 import Eris from "eris"
 
-import { getMatcherContext } from "./Matchers/Matcher"
+import { getMatcherContext } from "./Matcher"
 
 export type BotOptions = Eris.ClientOptions & {
   token: string

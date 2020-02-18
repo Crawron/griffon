@@ -1,4 +1,4 @@
-import { MessageEventContext } from "../MessageEventContext"
+import { MessageEventContext } from "./MessageEventContext"
 
 export type MatcherResult =
   | MatcherMatchResult

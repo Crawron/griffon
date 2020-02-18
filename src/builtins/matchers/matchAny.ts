@@ -1,4 +1,4 @@
-import { Matcher, MatcherErrorResult } from "./Matcher"
+import { Matcher, MatcherErrorResult } from "../../Matcher"
 
 /** Matches if any of the providers matchers match.
  * Errors have priority, if any error, it errors.

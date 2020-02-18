@@ -1,4 +1,4 @@
-import { Matcher } from "./Matcher"
+import { Matcher } from "../../Matcher"
 
 export const commandName: (...prefixes: string[]) => Matcher = (
   ...prefixes

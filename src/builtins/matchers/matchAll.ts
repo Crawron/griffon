@@ -4,7 +4,7 @@ import {
   MatcherErrorResult,
   MatcherContext,
   getMatcherContext,
-} from "./Matcher"
+} from "../../Matcher"
 
 export const matchAll = (...matchers: Matcher[]) => (
   ctx: MatcherContext

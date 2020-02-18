@@ -1,19 +1,21 @@
 export { Bot, BotOptions } from "./Bot"
 
 // Matchers
-export { Matcher } from "./Matchers/Matcher"
-export { matchAll } from "./Matchers/matchAll"
-export { everyMessage } from "./Matchers/everyMessage"
-export { matchStatus } from "./Matchers/matchStatus"
-export { commandName } from "./Matchers/commandName"
-export { matchOrError } from "./Matchers/matchOrError"
-export { skipErrors } from "./Matchers/skipErrors"
-export { skip } from "./Matchers/skip"
-export { hasArgs } from "./Matchers/hasArgs"
+export { Matcher } from "./Matcher"
+
+export { matchAll } from "./builtins/matchers/matchAll"
+export { everyMessage } from "./builtins/matchers/everyMessage"
+export { matchStatus } from "./builtins/matchers/matchStatus"
+export { commandName } from "./builtins/matchers/commandName"
+export { matchOrError } from "./builtins/matchers/matchOrError"
+export { skipErrors } from "./builtins/matchers/skipErrors"
+export { skip } from "./builtins/matchers/skip"
+export { hasArgs } from "./builtins/matchers/hasArgs"
 
 // Commands
-export { Command, CommandGroup } from "./Commands/Command"
-export { quickCommand } from "./Commands/quickCommand"
-export { replyCommand } from "./Commands/replyCommand"
-export { processCommand } from "./Commands/processCommand"
-export { echoCommand } from "./Commands/echoCommand"
+export { Command, CommandGroup } from "./Command"
+
+export { quickCommand } from "./builtins/commands/quickCommand"
+export { replyCommand } from "./builtins/commands/replyCommand"
+export { processCommand } from "./builtins/commands/processCommand"
+export { echoCommand } from "./builtins/commands/echoCommand"

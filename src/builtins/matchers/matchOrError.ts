@@ -1,4 +1,4 @@
-import { Matcher } from "./Matcher"
+import { Matcher } from "../../Matcher"
 
 export const matchOrError: (
   matcher: Matcher,

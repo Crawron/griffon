@@ -1,7 +1,7 @@
-import { Command } from "./Command"
-import { commandName } from "../Matchers/commandName"
-import { matchAll } from "../Matchers/matchAll"
-import { hasArgs } from "../Matchers/hasArgs"
+import { Command } from "../../Command"
+import { commandName } from "../matchers/commandName"
+import { matchAll } from "../matchers/matchAll"
+import { hasArgs } from "../matchers/hasArgs"
 
 export const processCommand: (
   process: (args: string) => string,

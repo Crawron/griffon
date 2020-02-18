@@ -11,6 +11,7 @@ export { matchOrError } from "./builtins/matchers/matchOrError"
 export { skipErrors } from "./builtins/matchers/skipErrors"
 export { skip } from "./builtins/matchers/skip"
 export { hasArgs } from "./builtins/matchers/hasArgs"
+export { fromAuthorId } from "./builtins/matchers/fromAuthorId"
 
 // Commands
 export { Command, CommandGroup } from "./Command"

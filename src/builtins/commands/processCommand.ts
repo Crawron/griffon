@@ -9,6 +9,6 @@ export const processCommand: (
 ) => Command = (process, name) => ({
   condition: matchAll(commandName(name), requireArgs()),
   action: ctx => {
-    ctx.message.channel.createMessage(process(ctx.message.content))
+    ctx.message.channel.createMessage(process(ctx.args))
   },
 })

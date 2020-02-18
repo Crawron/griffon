@@ -10,7 +10,7 @@ export { commandName } from "./builtins/conditions/commandName"
 export { matchOrError } from "./builtins/conditions/matchOrError"
 export { skipErrors } from "./builtins/conditions/skipErrors"
 export { skip } from "./builtins/conditions/skip"
-export { hasArgs } from "./builtins/conditions/hasArgs"
+export { requireArgs } from "./builtins/conditions/hasArgs"
 export { fromAuthorId } from "./builtins/conditions/fromAuthorId"
 
 // Commands

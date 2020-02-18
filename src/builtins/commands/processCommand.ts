@@ -1,7 +1,7 @@
 import { Command } from "../../Command"
 import { commandName } from "../conditions/commandName"
 import { matchAll } from "../conditions/matchAll"
-import { requireArgs } from "../conditions/hasArgs"
+import { requireArgs } from "../conditions/requireArgs"
 
 export const processCommand: (
   process: (args: string) => string,

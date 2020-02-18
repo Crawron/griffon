@@ -1,5 +1,5 @@
 import { Command } from "../../Command"
-import { requireArgs } from "../conditions/hasArgs"
+import { requireArgs } from "../conditions/requireArgs"
 import { matchAll } from "../conditions/matchAll"
 import { commandName } from "../conditions/commandName"
 

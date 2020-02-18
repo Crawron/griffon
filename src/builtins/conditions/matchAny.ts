@@ -1,16 +1,16 @@
-import { Matcher, MatcherErrorResult } from "../../Matcher"
+import { Condition, ConditionErrorResult } from "../../Condition"
 
-/** Matches if any of the providers matchers match.
+/** Matches if any of the providers conditions match.
  * Errors have priority, if any error, it errors.
  * To ignore errors, use skipError */
-export const matchAny: (...matchers: Matcher[]) => Matcher = (
-  ...matchers
+export const matchAny: (...matchers: Condition[]) => Condition = (
+  ...conditions
 ) => ctx => {
-  const results = matchers.map(m => m(ctx))
+  const results = conditions.map(m => m(ctx))
 
   // if any errors, error
   const error = results.find(
-    (r): r is MatcherErrorResult => r.status === "error"
+    (r): r is ConditionErrorResult => r.status === "error"
   )
   if (error) return error
 

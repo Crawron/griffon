@@ -2,7 +2,7 @@ import { CommandGroup, Command, CommandContext } from "./Command"
 import { MessageEventContext } from "./MessageEventContext"
 import Eris from "eris"
 
-import { getMatcherContext } from "./Matcher"
+import { getConditionContext } from "./Condition"
 
 export type BotOptions = Eris.ClientOptions & {
   token: string
@@ -48,7 +48,7 @@ export class Bot {
     let currentCommand = root
 
     while (true) {
-      let matcherResult = currentCommand.condition(getMatcherContext(ctx))
+      let matcherResult = currentCommand.condition(getConditionContext(ctx))
 
       switch (matcherResult.status) {
         case "skip":
@@ -71,7 +71,7 @@ export class Bot {
 
       // currentCommand is CommandGroup
       const childResults = currentCommand.childCommands.map(c => ({
-        result: c.condition(getMatcherContext(ctx)),
+        result: c.condition(getConditionContext(ctx)),
         command: c,
       }))
 

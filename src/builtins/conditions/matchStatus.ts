@@ -1,8 +1,8 @@
-import { MatcherStatus, Matcher } from "../../Matcher"
+import { ConditionStatus, Condition } from "../../Condition"
 
 export const matchStatus: (
-  status: MatcherStatus
-) => Matcher = status => ctx => {
+  status: ConditionStatus
+) => Condition = status => ctx => {
   switch (status) {
     case "match":
       return ctx.match()

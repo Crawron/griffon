@@ -1,22 +1,21 @@
 import {
-  Matcher,
-  MatcherResult,
-  MatcherErrorResult,
-  MatcherContext,
-  getMatcherContext,
-} from "../../Matcher"
+  Condition,
+  ConditionResult,
+  ConditionErrorResult,
+  getConditionContext,
+} from "../../Condition"
 
-export const matchAll = (...matchers: Matcher[]) => (
-  ctx: MatcherContext
-): MatcherResult => {
+export const matchAll: (...conditions: Condition[]) => Condition = (
+  ...conditions
+) => ctx => {
   const { skip, error, match } = ctx
 
   // collect all matchers' results
   let finalArgs = ctx.args
-  const matcherResults: MatcherResult[] = []
+  const matcherResults: ConditionResult[] = []
 
-  for (const matcher of matchers) {
-    const context = getMatcherContext({ ...ctx, args: finalArgs })
+  for (const matcher of conditions) {
+    const context = getConditionContext({ ...ctx, args: finalArgs })
     const results = matcher(context)
 
     if (results.status === "match") finalArgs = results.args
@@ -25,7 +24,7 @@ export const matchAll = (...matchers: Matcher[]) => (
 
   // error() if any of the matchers error
   const errorResult = matcherResults.find(
-    (r): r is MatcherErrorResult => r.status === "error"
+    (r): r is ConditionErrorResult => r.status === "error"
   )
   if (errorResult) return error(errorResult.error)
 

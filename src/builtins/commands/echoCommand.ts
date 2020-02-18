@@ -1,7 +1,7 @@
 import { Command } from "../../Command"
-import { hasArgs } from "../matchers/hasArgs"
-import { matchAll } from "../matchers/matchAll"
-import { commandName } from "../matchers/commandName"
+import { hasArgs } from "../conditions/hasArgs"
+import { matchAll } from "../conditions/matchAll"
+import { commandName } from "../conditions/commandName"
 
 export const echoCommand: (name?: string) => Command = (name = "echo") => ({
   condition: matchAll(commandName(name), hasArgs()),

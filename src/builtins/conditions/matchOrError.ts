@@ -1,12 +1,12 @@
-import { Matcher } from "../../Matcher"
+import { Condition } from "../../Condition"
 
 export const matchOrError: (
-  matcher: Matcher,
+  condition: Condition,
   errorMessage: string
-) => Matcher = (matcher, message) => ctx => {
+) => Condition = (condition, message) => ctx => {
   const { error } = ctx
 
-  const result = matcher(ctx)
+  const result = condition(ctx)
   if (result.status === "skip") return error(message)
 
   return result

@@ -1,5 +1,5 @@
 import { Command } from "../../Command"
-import { commandName } from "../matchers/commandName"
+import { commandName } from "../conditions/commandName"
 
 export const replyCommand: (replyMsg: string, name: string) => Command = (
   replyMsg,

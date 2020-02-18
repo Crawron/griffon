@@ -1,17 +1,17 @@
 export { Bot, BotOptions } from "./Bot"
 
 // Matchers
-export { Matcher } from "./Matcher"
+export { Condition as Matcher } from "./Condition"
 
-export { matchAll } from "./builtins/matchers/matchAll"
-export { everyMessage } from "./builtins/matchers/everyMessage"
-export { matchStatus } from "./builtins/matchers/matchStatus"
-export { commandName } from "./builtins/matchers/commandName"
-export { matchOrError } from "./builtins/matchers/matchOrError"
-export { skipErrors } from "./builtins/matchers/skipErrors"
-export { skip } from "./builtins/matchers/skip"
-export { hasArgs } from "./builtins/matchers/hasArgs"
-export { fromAuthorId } from "./builtins/matchers/fromAuthorId"
+export { matchAll } from "./builtins/conditions/matchAll"
+export { everyMessage } from "./builtins/conditions/everyMessage"
+export { matchStatus } from "./builtins/conditions/matchStatus"
+export { commandName } from "./builtins/conditions/commandName"
+export { matchOrError } from "./builtins/conditions/matchOrError"
+export { skipErrors } from "./builtins/conditions/skipErrors"
+export { skip } from "./builtins/conditions/skip"
+export { hasArgs } from "./builtins/conditions/hasArgs"
+export { fromAuthorId } from "./builtins/conditions/fromAuthorId"
 
 // Commands
 export { Command, CommandGroup } from "./Command"

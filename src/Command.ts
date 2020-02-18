@@ -1,5 +1,5 @@
 import { MessageEventContext } from "./MessageEventContext"
-import { Matcher } from "./Matcher"
+import { Condition } from "./Condition"
 
 // super placeholder
 export type CommandMetadata = Partial<{
@@ -9,7 +9,7 @@ export type CommandMetadata = Partial<{
 }>
 
 export type CommandLike = {
-  condition: Matcher
+  condition: Condition
   metadata?: CommandMetadata
 }
 

@@ -1,6 +1,6 @@
-import { Matcher } from "../../Matcher"
+import { Condition } from "../../Condition"
 
-export const commandName: (...prefixes: string[]) => Matcher = (
+export const commandName: (...prefixes: string[]) => Condition = (
   ...prefixes
 ) => ctx => {
   const { match, skip } = ctx

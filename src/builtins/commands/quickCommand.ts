@@ -1,6 +1,6 @@
 import { Command, CommandContext } from "../../Command"
-import { matchAll } from "../matchers/matchAll"
-import { commandName } from "../matchers/commandName"
+import { matchAll } from "../conditions/matchAll"
+import { commandName } from "../conditions/commandName"
 
 export const quickCommand: (
   action: (ctx: CommandContext) => string,

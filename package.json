@@ -1,24 +1,24 @@
 {
-	"name": "@crawron/griffon",
-	"author": "Crawron",
-	"repository": "git://github.com/Crawron/griffon.git",
-	"version": "0.1.0",
-	"main": "./lib/index.js",
-	"types": "./lib/index.d.ts",
-	"scripts": {
-		"prepublish": "tsc"
-	},
-	"devDependencies": {
-		"@types/jest": "^25.1.1",
-		"@types/node": "^13.7.0",
-		"dotenv": "^8.2.0",
-		"eris": "^0.11.2",
-		"jest": "^25.1.0",
-		"ts-jest": "^25.1.0",
-		"ts-node": "^8.6.2",
-		"typescript": "^3.7.5"
-	},
-	"peerDependencies": {
-		"eris": "^0.11.2"
-	}
+  "name": "@crawron/griffon",
+  "author": "Crawron",
+  "repository": "git://github.com/Crawron/griffon.git",
+  "version": "0.2.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "prepublish": "tsc"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.1",
+    "@types/node": "^13.7.0",
+    "dotenv": "^8.2.0",
+    "eris": "^0.11.2",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.1.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "peerDependencies": {
+    "eris": "^0.11.2"
+  }
 }

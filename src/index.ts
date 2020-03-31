@@ -1,7 +1,7 @@
 export { Bot, BotOptions } from "./Bot"
 
-// Matchers
-export { Condition as Matcher } from "./Condition"
+// Conditions
+export { Condition } from "./Condition"
 
 export { matchAll } from "./builtins/conditions/matchAll"
 export { everyMessage } from "./builtins/conditions/everyMessage"

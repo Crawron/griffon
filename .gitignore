@@ -4,3 +4,9 @@ lib
 notes.md
 *.log
 .vscode
+
+/.yarn/*
+!/.yarn/releases
+!/.yarn/plugins
+!/.yarn/sdks
+/.pnp.*

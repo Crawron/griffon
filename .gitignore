@@ -4,3 +4,4 @@ lib
 notes
 notes.md
 *.log
+.vscode
